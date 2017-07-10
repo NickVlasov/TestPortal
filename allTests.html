@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/styles.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+</head>
+<body>
+<header>
+    <div class="siteName">
+        <a href="index.html">TestingPlatform</a>
+    </div>
+    <nav>
+        <ul>
+            <li>
+                <a href="allTests.html">All tests</a>
+            </li>
+            <li>
+                <a href="testPage0.html">HTML5 test</a>
+            </li>
+            <li>
+                <a href="gallery.html">Gallery</a>
+            </li>
+            <li>
+                <a href="#">Tests</a>
+                <ul class="sublist">
+                    <li><a href="testPage0.html">HTML5 Test</a></li>
+                    <li><a href="#">Lorem</a></li>
+                    <li><a href="#">Lorem</a></li>
+                    <li><a href="#">Lorem</a></li>
+                    <li><a href="#">Lorem</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="contact.html">Contacts</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div class="container">
+    <div class="filterCont">
+        <label for="search">Search</label><br>
+        <input type="text" class="search" id="search" placeholder="Please type something to start"><br>
+        <label class="showAll">
+            <input type="radio" name="filter"/><div>Show All</div>
+        </label><br>
+        <div>Filter by:</div>
+        <label class="filter">
+            <input type="radio" name="filter"/><div>HTML</div>
+        </label>
+        <label class="filter">
+            <input type="radio" name="filter"/><div>CSS</div>
+        </label>
+        <label class="filter">
+            <input type="radio" name="filter"/><div>JS</div>
+        </label><br>
+        <label class="sort">
+            <input type="radio" name="filter"/><div>Sort by name</div>
+        </label>
+    </div>
+    <div class="allTests">
+        <div class="testBlock">
+            <a href="#">
+                <div class="imgWrap">
+                    <img src="img/testImgs/HTML5.png" alt="">
+                </div>
+                <div class="testContent">
+                    <div class="testTitle">
+                        HTML 5 Test
+                    </div>
+                    <div class="testDesc">Lorem ipsum dolor sit amet.</div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="pagButtons">
+        <button class="pag">1</button>
+        <button class="pag">2</button>
+    </div>
+</div>
+<footer>
+    <div class="siteName">
+        <a href="#">TestingPlatform</a>
+    </div>
+    <nav>
+        <ul>
+            <li>
+                <a href="allTests.html">All test</a>
+            </li>
+            <li>
+                <a href="testPage0.html">HTML5 Test</a>
+            </li>
+            <li>
+                <a href="contact.html">Contacts</a>
+            </li>
+        </ul>
+    </nav>
+</footer>
+</body>
+</html>
