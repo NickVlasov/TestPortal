@@ -275,7 +275,7 @@ $(document).ready(function(){
 				}, 1000);
 			}
 
-			timer(1, "sec");
+			timer(100, "sec");
 		}
 	})
 
