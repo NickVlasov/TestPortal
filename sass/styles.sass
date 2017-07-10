@@ -162,6 +162,7 @@ footer
 			flex-flow: column
 			padding: 15px
 			height: 100%
+			width: 100%
 			background-color: $testBlockBg 
 			box-shadow: 5px 5px 3px 3px $shadowBg
 			line-height: 1.3em
@@ -200,6 +201,8 @@ footer
 		display: flex
 
 		a
+			height: 100%
+			width: 100%
 			display: flex
 			flex-wrap: wrap
 			padding: 10px
@@ -373,6 +376,18 @@ input:checked + div
 		margin-top: 5px
 
 
+@media (max-width:768px)
+	.container
+		padding-left: 0
+		padding-right: 0
+	.chooseTest .testBlock, .allTests .testBlock
+		flex-basis: 100%
+	.gallery
+		div
+			flex-basis: 100%
+			padding: 0
+			img
+				width: 100%
 
 	
 
