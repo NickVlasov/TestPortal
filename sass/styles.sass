@@ -1,14 +1,4 @@
-// $mainColor: #0057e7
-// $textColor: #000000
-// $testBlockBg: #ffa700
-// $checkedColor: #008744
-// $shadowBg: rgba(255,167,0,0.59)
-$mainColor: #0392cf
-$textColor: #000000
-$testBlockBg: #f37736
-$checkedColor: #7bc043
-$hoverColor: #d62d20
-$shadowBg: #ec9863
+@import "colorPalette1.sass"
 $paddingVar: 15px
 @import url('https://fonts.googleapis.com/css?family=Lato:400,700|Open+Sans:400,400i,600,700|&subset=cyrillic')
 
@@ -24,8 +14,7 @@ body
 
 .sliderWrapper
 	position: relative
-
-	a
+	.arrows
 		width: 30px
 		height: 30px
 		background: url("../img/arrow.png") 50%
@@ -38,47 +27,50 @@ body
 			right: 0
 			transform: rotate(180deg)
 
-.sliderCont
-	width: 100%
-	height: 300px
-	overflow: hidden
-	position: relative
+	.sliderCont
+		width: 100%
+		height: 300px
+		overflow: hidden
+		position: relative
 
-	.sliderlist
-		position: absolute
-		height: 100%
-		left: 0
-		top: 0
-		margin: 0
-		padding: 0
-
-		.slide
+		.sliderlist
+			position: absolute
 			height: 100%
-			float: left
-			list-style: none
+			left: 0
+			top: 0
 			margin: 0
 			padding: 0
-		
-			img
+
+			.slide
 				width: 100%
 				height: 100%
+				float: left
+				list-style: none
+				margin: 0
+				padding: 0
+			
+				img
+					width: 100%
+					height: 100%
 
 header, footer
 	display: flex
 	justify-content: space-between
+	position: relative
 	align-items: center
 	padding: $paddingVar
 	background-color: $mainColor
 
 	>div
 		font-family: 'Lato', sans-serif
-		a	
+		a   
 			display: block
 			padding: 10px 0
 			font-size: 1.5em
 			font-weight: bold
 
 nav
+	z-index: 1
 	width: auto
 	>ul
 		display: flex
@@ -93,6 +85,17 @@ nav
 				color: black
 				text-decoration: none
 				font-family: 'Lato', sans-serif
+				margin-right: 10px
+			
+			&:after
+				content: "/"
+				position: absolute
+				right: 3px
+				top: 11px
+				font-size: 14px
+
+			&:last-child:after
+				content: none
 
 			&:hover
 				.sublist
@@ -121,6 +124,132 @@ nav
 
 					&:hover
 						background-color: $testBlockBg
+
+.toggle_mnu
+	display: none
+	width: 60px
+	height: 60px
+	position: relative
+	z-index: 1
+	border: none
+	right: 0
+	top: 0
+	background: transparent
+	cursor: pointer
+	&:focus
+		outline: 0
+	span
+		display: block
+	> span > span
+		box-shadow: 0 0 4px rgba(0, 0, 0, 0.7)
+
+	.sandwich
+		width: 40px
+		height: 28px
+		position: absolute
+		top: 8px
+		bottom: 0
+		left: 0
+		right: 0
+		margin: auto
+		z-index: 200
+
+		&.active
+			.sw-topper
+				top: 9px
+				transform: rotate(-45deg)
+			.sw-bottom
+				top: 6px
+				transform: rotate(45deg)
+			.sw-footer
+				opacity: 0
+				top: 0
+				transform: rotate(180deg)
+
+	.sw-bottom, .sw-footer
+		position: relative
+		width: 40px
+		height: 2px
+		background: #F6BB18
+
+	.sw-topper
+		position: relative
+		width: 40px
+		height: 2px
+		background: #F6BB18
+		top: 0
+		border: none
+		border-radius: 4px
+		transition: transform .5s, top .2s
+		display: block
+
+	.sw-bottom
+		top: 6.6px
+		border: none
+		border-radius: 4px
+		transition: transform .5s, top .2s
+		transition-delay: .2s, 0
+
+	.sw-footer
+		top: 13.5px
+		border: none
+		border-radius: 4px
+		transition: all .5s
+		transition-delay: .1s
+
+.breadcrumbs ul 
+	margin: 0 0 20px -10px
+	padding: 0
+	overflow: hidden
+	width: 100%
+	list-style: none
+
+	li 
+		float: left
+		margin: 0 10px
+
+		a 
+			background: #ddd
+			padding: .7em 1em
+			float: left
+			text-decoration: none
+			color: #444
+			text-shadow: 1px 1px 0 rgba(0,0,0, 0.3)
+			position: relative
+
+
+			&:hover 
+				background: #99db76
+
+
+		&:not(:first-child) > a::before 
+			content: ""
+			position: absolute
+			top: 50%
+			margin-top: -1.5em   
+			border-width: 1.5em 0 1.5em 1em
+			border-style: solid
+			border-color: #ddd #ddd #ddd transparent
+			left: -1em
+
+
+		&:not(:first-child) > a:hover::before 
+			border-color: #99db76 #99db76 #99db76 transparent
+
+
+		&:not(:last-child) > a::after 
+			content: ""
+			position: absolute
+			top: 50%
+			margin-top: -1.5em   
+			border-top: 1.5em solid transparent
+			border-bottom: 1.5em solid transparent
+			border-left: 1em solid #ddd
+			right: -1em
+
+
+		&:not(:last-child) > a:hover::after 
+			border-left-color: #99db76
 
 
 .container
@@ -167,7 +296,7 @@ footer
 			box-shadow: 5px 5px 3px 3px $shadowBg
 			line-height: 1.3em
 			img
-				width: 50%
+				width: 60%
 				height: 150px
 				margin: auto
 				transition: all .5s ease
@@ -299,6 +428,42 @@ input:checked + div
 	.timeLeft
 		text-align: right
 
+.answerResultContainer
+	margin: 30px 0
+	div
+		margin-bottom: 10px
+		padding: 10px
+
+		&:first-child
+			padding-left: 10px
+			margin-bottom: 0
+			font-weight: 600
+
+	.wrong
+		background-color: #d62d20
+
+	.right
+		background-color: #7bc043
+
+.socialContainer
+	text-align: center
+	margin-top: 50px
+
+	.socialShare
+		display: inline-block
+		margin: 0 10px
+		background-color: #ec9863
+		a
+			display: flex
+			padding: 10px
+			align-items: center
+			img
+				width: 32px
+				height: 32px
+			span
+				font-size: 0.8em
+				margin-left: 10px
+
 .danger
 	color: $hoverColor
 	margin: 20px 0
@@ -327,8 +492,6 @@ input:checked + div
 		font-size: 1.2em
 		font-weight: 700
 
-
-
 @keyframes blink
 	0%
 		color: #000
@@ -342,8 +505,6 @@ input:checked + div
 
 .animateTime
 	animation: blink 2s infinite
-
-
 
 .variants label div
 	padding: 10px
@@ -368,26 +529,76 @@ input:checked + div
 			img
 				height: 400px
 
+#lightgallery
+	display: flex
+	flex-wrap: wrap
+	a
+		display: flex
+		flex-basis: 25%
+		padding: 20px
+		img
+			width: 100%
+			height: 300px
 
 .contactUs
 	margin: 15px 0 30px 15px
 	line-height: 1.2
+
 	ul
 		margin-top: 5px
 
 
 @media (max-width:768px)
+	header
+		nav
+			display: none
+			position: absolute
+			top: 100%
+			left: 0
+			width: 100%
+			background-color: $testBlockBg
+
+			ul
+				flex-direction: column
+
+				li
+					&:after
+						content: none !important
+			.sublist
+				position: relative !important
+				background-color: $testBlockBg 
+				font-size: 0.8em
+
+				li
+					padding-left: 10px !important
+
+		nav > ul > li:hover .sublist
+			display: none
+
+		.toggle_mnu
+			display: block
+
 	.container
 		padding-left: 0
 		padding-right: 0
+	
+	.chooseTest .testBlock a div img
+		height: 200px
+
 	.chooseTest .testBlock, .allTests .testBlock
 		flex-basis: 100%
+
+	.allTests
+		img
+			width: 50% !important
+			max-height: 120px
+
 	.gallery
 		div
 			flex-basis: 100%
 			padding: 0
+
 			img
 				width: 100%
 
-	
 

@@ -12,6 +12,7 @@ $(document).ready(function(){
 		$('.slide').hover(function(){
 			clearInterval(sliderGo);
 		},function(){
+			clearInterval(sliderGo);
 			sliderGo=setInterval(nextSlide,slideDelay);
 		});
 		$('#next_slide').click(function(){
@@ -43,6 +44,18 @@ $(document).ready(function(){
 		}
 		$('.sliderlist').animate({left: -currentSlide*slideWidth},slideSpeed);
 	}
+
+
+	$(".toggle_mnu").click(function (e) {
+		e.preventDefault();
+		$("nav").slideToggle();
+		$(".sandwich").toggleClass("active");
+	});
+
+	$(".sub").click(function(e) {
+		e.preventDefault();
+		$(".sublist").slideToggle();
+	});
 
 	$.ajax({
 		type: "GET",
@@ -108,7 +121,7 @@ $(document).ready(function(){
 			function renderTests(i){
 				if(!data.tests[i]) return;
 				var currTestBlock = $("<div class='testBlock'></div>");
-				var testLink = "testPage" + (i+1) + ".html";
+				var testLink = "testPage" + i + ".html";
 				var anchorAround = $("<a href=" + testLink + "></a>");
 				var testImg = $("<div class='imgWrap'><img src=" + data.tests[i].imgLink + "/></div>");
 				var testTitle = "<div class='testTitle'>" + data.tests[i].title + "</div>";
@@ -148,14 +161,14 @@ $(document).ready(function(){
 			function sort(){
 				$(".allTests").html("");
 				$(".pagButtons").html("");
-				var testsArray = data.tests;
+				var testsArray = data.tests.slice();
 				testsArray.sort(function(a, b) {
 					return a.title > b.title;
 				});
 				for(var i=0; i<standarPaginationQuantity; i++){
 					if(!testsArray[i]) return;
 					var currTestBlock = $("<div class='testBlock'></div>");
-					var testLink = "testPage" + (i+1) + ".html";
+					var testLink = "testPage" + i + ".html";
 					var anchorAround = $("<a href=" + testLink + "></a>");
 					var testImg = $("<div class='imgWrap'><img src=" + testsArray[i].imgLink + "/></div>");
 					var testTitle = "<div class='testTitle'>" + testsArray[i].title + "</div>";
@@ -189,7 +202,6 @@ $(document).ready(function(){
 			var needTimer = true;
 			function renderQuestions(testNumber){
 				var testTitle = $("<div class='testTitle' ></div>").html(data.tests[testNumber].title);
-				console.log('test');
 				$(".testContainer").prepend(testTitle);
 				var questionsContainer = $("<div class='questionsContainer'></div>");
 				for(var i=0; i<data.tests[testNumber].questions.length; i++){
@@ -209,8 +221,9 @@ $(document).ready(function(){
 			
 			renderQuestions(curTestNumber);
 
-			var questionsNumber = $(".testContainer .question").length;
+			
 			$(".check").on("click", function(){
+				var questionsNumber = $(".testContainer .question").length;
 				var allCheckedNumber = $( ".testContainer input:checked" ).length;
 				var questionsNumber = $(".question").length;
 				if(allCheckedNumber<questionsNumber){
@@ -240,8 +253,60 @@ $(document).ready(function(){
 				$(".rightAnwersBlock").remove();
 				$(".questionsContainer").remove();
 				$(".check").remove();
-				var rightA = $("<div class='rightAnwersBlock'></div>").html("You have answered correctly <span class='rightAnswers'>" + rightCount + "</span> out of <span class='allAnswers'>" +currAnswers.length + "</span> questions");
+				var rightA = $("<div class='rightAnwersBlock'></div>").html("You have answered correctly <span class='rightAnswers'>" + rightCount + "</span> out of <span class='allAnswers'>" + currAnswers.length + "</span> questions");
 				$(".testContainer").append(rightA);
+
+				var socialButContainer = $("<div class='socialContainer'></div>");
+				createSocialButton("facebook", facebookLink);
+				createSocialButton("twitter", twitterLink);
+				$(".testContainer").append(socialButContainer);
+				function shareResult(){
+					return  "I have answered " + rightCount + " of " + currAnswers.length +  " questions for " + data.tests[testNumber].title + " at TestPortal.com";
+				}
+				var twitterLink = "https://twitter.com/intent/tweet?text=" + shareResult();
+				var facebookLink = "https://www.facebook.com/sharer/sharer.php?" + 
+				"u=http://testportal.com" +
+				"&picture=" + "https://www.w3.org/html/logo/downloads/HTML5_Logo_128.png" + 
+				"&title=" + shareResult() + 
+				"&description=" + "Try to beat me!";
+				
+				function createSocialButton(site,link){
+					var curButton = $("<div class='socialShare'></div>");
+					var curButtonLink = $("<a>").attr({
+						href: link,
+						target: "_blank"
+					});
+					var curButtonLinkIcon = $("<img>").attr("src", "img/socialIcons/" + site + ".png");
+					var curButtonText = $("<span></span>").text("Share at " + site);
+					curButtonLink.append(curButtonLinkIcon).append(curButtonText);
+					curButton.append(curButtonLink);
+					socialButContainer.append(curButton);
+				}
+
+
+				for(var i=0; i<currAnswers.length; i++){
+					var yourAnswerText = "";
+					var rightAnswer;
+					var curAnsArrInd = currAnswers[i] - 1;
+					var rightAnswerInd = rightAnswers[i]-1;
+					if(rightAnswers[i] == currAnswers[i]){
+						rightAnswer = $("<div></div>").html("You answered right for this question! Right answer is: " + data.tests[testNumber].questions[i].Questions[rightAnswerInd]).addClass("right");
+					} else {
+						rightAnswer = $("<div></div>").html("Right answer is: " + data.tests[testNumber].questions[i].Questions[rightAnswerInd]).addClass("right");
+						if(curAnsArrInd!= -1){
+							yourAnswerText = $("<div></div>").html("Your answered wrong: " + data.tests[testNumber].questions[i].Questions[curAnsArrInd]).addClass("wrong");
+							} else {
+							yourAnswerText = $("<div></div>").html("You did not have time to answer this question").addClass("wrong");
+						}
+					}
+					var answerResultContainer = $("<div class='answerResultContainer'></div>");
+					var qTitle = $("<div></div>").html(data.tests[testNumber].questions[i].Title);
+					answerResultContainer.append(qTitle);
+					answerResultContainer.append(yourAnswerText);
+					answerResultContainer.append(rightAnswer);
+					$(".testContainer").append(answerResultContainer);
+				}
+				
 				needTimer = false;
 			}
 
@@ -275,7 +340,10 @@ $(document).ready(function(){
 				}, 1000);
 			}
 
-			timer(100, "sec");
+			timer(2);
+		},
+		error: function(){
+			console.log("Some error");
 		}
 	})
 

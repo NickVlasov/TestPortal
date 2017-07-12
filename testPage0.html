@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>HTML5 Test</title>
 	<link rel="stylesheet" href="css/reset.css">
 	<link rel="stylesheet" href="css/styles.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -12,37 +14,51 @@
 </head>
 <body>
 <header>
-	<div class="siteName">
-		<a href="index.html">TestingPlatform</a>
-	</div>
-	<nav>
-		<ul>
-			<li>
-				<a href="allTests.html">All tests</a>
-			</li>
-			<li>
-				<a href="testPage0.html">HTML5 test</a>
-			</li>
-			<li>
-				<a href="gallery.html">Gallery</a>
-			</li>
-			<li>
-				<a href="#">Tests</a>
-				<ul class="sublist">
-					<li><a href="testPage0.html">HTML5 Test</a></li>
-					<li><a href="#">Lorem</a></li>
-					<li><a href="#">Lorem</a></li>
-					<li><a href="#">Lorem</a></li>
-					<li><a href="#">Lorem</a></li>
-				</ul>
-			</li>
-			<li>
-				<a href="contact.html">Contacts</a>
-			</li>
-		</ul>
-	</nav>
+    <div class="siteName">
+        <a href="index.html">TestingPlatform</a>
+    </div>
+    <nav>
+        <ul>
+            <li>
+                <a href="allTests.html">All tests</a>
+            </li>
+            <li>
+                <a href="testPage0.html">HTML5 test</a>
+            </li>
+            <li>
+                <a href="gallery.html">Gallery</a>
+            </li>
+            <li class="sub">
+                <a href="#">Tests</a>
+                <ul class="sublist">
+                    <li><a href="testPage0.html">HTML5 Test</a></li>
+                    <li><a href="anotherGallery.html">Another Gallery</a></li>
+                    <li><a href="#">Lorem</a></li>
+                    <li><a href="#">Lorem</a></li>
+                    <li><a href="#">Lorem</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="contact.html">Contacts</a>
+            </li>
+        </ul>
+    </nav>
+    <button class="toggle_mnu">
+        <span class="sandwich">
+            <span class="sw-topper"></span>
+            <span class="sw-bottom"></span>
+            <span class="sw-footer"></span>
+        </span>
+    </button>
 </header>
 <div class="container">
+	<div class="breadcrumbs">
+        <ul>
+            <li><a href="index.html">Main page</a></li>
+            <li><a href="allTests.html">All Tests</a></li>
+            <li><a href="#">HTML5 Test</a></li>
+        </ul>
+    </div>  
 	<div class="testContainer">
 		<div class="timeLeft"></div>
 	</div>
@@ -51,8 +67,8 @@
 	</div>
 </div>
 <footer>
-    <div class="siteName">
-        <a href="#">TestingPlatform</a>
+    <div>
+        <a href="#">Made by Vlasov Mykola</a>
     </div>
     <nav>
         <ul>

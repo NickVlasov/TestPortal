@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Contact us</title>
 	<link rel="stylesheet" href="css/reset.css">
 	<link rel="stylesheet" href="css/styles.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
@@ -15,6 +16,10 @@
             padding-left: 0;
             padding-right: 0;
             padding-bottom: 0;
+        }
+
+        .breadcrumbs{
+            margin-left: 15px;
         }
     </style>
 </head>
@@ -34,11 +39,11 @@
             <li>
                 <a href="gallery.html">Gallery</a>
             </li>
-            <li>
+            <li class="sub">
                 <a href="#">Tests</a>
                 <ul class="sublist">
                     <li><a href="testPage0.html">HTML5 Test</a></li>
-                    <li><a href="#">Lorem</a></li>
+                    <li><a href="anotherGallery.html">Another Gallery</a></li>
                     <li><a href="#">Lorem</a></li>
                     <li><a href="#">Lorem</a></li>
                     <li><a href="#">Lorem</a></li>
@@ -49,8 +54,21 @@
             </li>
         </ul>
     </nav>
+    <button class="toggle_mnu">
+        <span class="sandwich">
+            <span class="sw-topper"></span>
+            <span class="sw-bottom"></span>
+            <span class="sw-footer"></span>
+        </span>
+    </button>
 </header>
 <div class="container">
+    <div class="breadcrumbs">
+        <ul>
+            <li><a href="index.html">Main page</a></li>
+            <li><a href="#">Contact us</a></li>
+        </ul>
+    </div>  
     <div class="contactUs">
         You can contact with us:
         <ul>
@@ -62,8 +80,8 @@
     <div id="map"></div>
 </div>
 <footer>
-    <div class="siteName">
-        <a href="#">TestingPlatform</a>
+    <div>
+        <a href="#">Made by Vlasov Mykola</a>
     </div>
     <nav>
         <ul>

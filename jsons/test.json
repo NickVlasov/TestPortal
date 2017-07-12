@@ -4,11 +4,11 @@
 		"title" : "HTML5 Test",
     "description" : "Basic test about HTML5 and it's basic rules", 
 		"questions" : [ 
-  	{"Title" : "HTML5 test11 question", "Questions" : ["right", "second wrong answer", "third wrongAnswer"]}, 
-  	{"Title" : "HTML5 test22 question", "Questions" : ["html wrong answer", "right", "html 3rd"]},
-  	{"Title" : "HTML5 test33 question", "Questions" : ["html wrong answer", "html 2nd", "right"]},
-    {"Title" : "HTML5 test44 question", "Questions" : ["html wrong answer", "right", "html 3rd"]},
-    {"Title" : "HTML5 test55 question", "Questions" : ["right", "html 2nd", "html 3nd"]}],
+  	{"Title" : "How can audio files be played in HTML5?", "Questions" : ["sound.play()", "sound.start()", "sound.begin()"]}, 
+  	{"Title" : "Which of the following attributes gets hidden when the user clicks on the element that it modifies?", "Questions" : ["autocomplete", "placeholder", "autofocus"]},
+  	{"Title" : "Which of the following method retrieves the current geographic location of the user?", "Questions" : ["geolocation.clearPosition()", "geolocation.watchPosition()", "geolocation.getCurrentPosition()"]},
+    {"Title" : "Which of the following tag represents a section of the document intended for navigation in HTML5?", "Questions" : ["section", "nav", "dialog"]},
+    {"Title" : "Which of the following input control is used for input fields that should contain an URL address in Web Form 2.0?", "Questions" : ["url", "number", "email"]}],
   	"answers" : [1,2,3,2,1],
   	"tags": ["HTML","WEB"],
     "imgLink" : "img/testImgs/HTML5.png"
